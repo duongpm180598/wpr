@@ -1,0 +1,9 @@
+<div class="header">
+    <% if (user) { %>
+        <span>
+            <%= user.name %>
+        </span>
+        <% } %>
+
+            <a href="/logout?userId=<%= user.id %>">Sign out</a>
+</div>

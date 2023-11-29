@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Outbox</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+    <%- include('header.ejs') %>
+        <section>
+            <%- include('sidebar.ejs') %>
+
+                <div class="container">
+                    <h3>List email</h3>
+                    <%if (user.logged_in) { %>
+                        <form action="/delete-inbox?userId=<%= user.id %>" method="POST">
+                            <div class="btn-delete">
+                                <button type="submit">Delete</button>
+                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Subject</th>
+                                        <th>Receiver</th>
+                                        <th>Message</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <%if (inboxes.length> 0) { %>
+                                        <% for(var i=0; i < inboxes.length; i++) { %>
+                                            <tr>
+                                                <td class="col-checkbox">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            id="customCheck1">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a
+                                                        href="/detail?userId=<%= user.id %>&emailId=<%= inboxes[i].id %>">
+                                                        <%= inboxes[i].subject || '(no subject)' %>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <%= inboxes[i].receiver_name%>
+                                                </td>
+
+                                                <td>
+                                                    <%= inboxes[i].message %>
+                                                </td>
+                                                <td>
+                                                    <%= inboxes[i].created_at %>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                                <% } else { %>
+                                                    <tr>
+                                                        <td>There is no mail</td>
+                                                    </tr>
+                                                    <% } %>
+                                </tbody>
+
+                            </table>
+                        </form>
+                        <%- include('pagination.ejs') %>
+                        <% } else { %>
+                            <p class="text-danger">Access denied</p>
+                            <% } %>
+                </div>
+        </section>
+</body>
+
+</html>

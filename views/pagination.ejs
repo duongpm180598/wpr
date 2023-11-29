@@ -1,0 +1,29 @@
+<div class="pagination">
+    <% if (pages> 1) { %>
+        <% if (page> 1) { %>
+            <a href="/<%= screen %>?userId=<%= user.id %>&page=<%= page - 1 %>">&laquo;</a>
+            <% } else { %>
+                <a>&laquo;</a>
+                <% } %>
+                    <% for (let i=1; i <=pages; i++) { %>
+                        <% if (i===page) { %>
+                            <a class="active">
+                                <%= i %>
+                            </a>
+                            <% } else { %>
+                                <a href="/<%= screen %>?userId=<%= user.id %>&page=<%= i %>">
+                                    <%= i %>
+                                </a>
+                                <% } %>
+                                    <% } %>
+
+                                        <% if (page < pages) { %>
+                                            <a
+                                                href="/<%= screen %>?userId=<%= user.id %>&page=<%= page + 1 %>">&raquo;</a>
+                                            <% } else { %>
+                                                <a>&raquo;</a>
+                                                <% } %>
+                                                    <% } %>
+
+
+</div>

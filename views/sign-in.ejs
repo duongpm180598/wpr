@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 14px 20px;
+            margin: 8px 0;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Sign in Form</h2>
+    <form class="form" action="/login" method="post">
+        <div class="container">
+            <label for="email"><b>Email</b></label>
+            <input type="email" placeholder="Enter email" name="email" required>
+
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+
+            <button type="submit">Sign in</button>
+
+            <p>If you don't have account, please sign-up <a href="/sign-up">here</a></p>
+        </div>
+    </form>
+
+</body>
+
+</html>

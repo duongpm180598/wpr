@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Detail</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+    <%- include('header.ejs') %>
+        <section>
+            <%- include('sidebar.ejs') %>
+
+
+                <div class="container">
+                    <h3>Compose email</h3>
+                    <%if (user.logged_in) { %>
+                        <form method="get">
+                            <label for="receiver">Receiver:</label><br>
+                            <input type="text" value="<%= email.receiver_name %>" /><br>
+                            <label for="subject">Subject:</label><br>
+                            <input type="text" id="subject" name="subject" value="<%= email.subject %>" /><br>
+                            <label for="message">Message:</label><br />
+                            <textarea rows="3"><%= email.message %></textarea> <br />
+                            <br />
+                            <%if (email.file) { %>
+                                <label for="file">Uploaded file</label>
+                                <a href="/download?emailId=<%= email.id %>">download</a>
+                                <% } %>
+
+                        </form>
+                        <% } else { %>
+                            <p class="text-danger">Access denied</p>
+                            <% } %>
+                </div>
+
+
+        </section>
+</body>
+
+</html>
